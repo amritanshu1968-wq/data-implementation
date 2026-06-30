@@ -1,3 +1,0 @@
-Today I learned Python file handling.
-I practiced reading and writing files.
-Python programming is interesting.
