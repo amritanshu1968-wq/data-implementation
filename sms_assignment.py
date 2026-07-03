@@ -1,15 +1,4 @@
-# ==========================================================
-# Project Name : Student Management System
-# Language     : Python
-# Description  : Menu-driven Student Management System using
-#                OOP, File Handling, and Exception Handling.
-# ==========================================================
 
-
-# -----------------------------
-# Student Class
-# -----------------------------
-# This class is used to create student objects.
 class Student:
 
     # Constructor to initialize student details
@@ -28,9 +17,8 @@ class Student:
 FILE_NAME = "students.txt"
 
 
-# ==========================================================
 # Function : Add Student
-# ==========================================================
+
 def add_student():
 
     print("\n----- Add Student -----")
@@ -51,9 +39,9 @@ def add_student():
     print("\nStudent Added Successfully!")
 
 
-# ==========================================================
+
 # Function : View Students
-# ==========================================================
+
 def view_students():
 
     print("\n----- Student Records -----")
@@ -88,9 +76,8 @@ def view_students():
         print("students.txt file does not exist.")
 
 
-# ==========================================================
 # Function : Search Student
-# ==========================================================
+
 def search_student():
 
     roll = input("\nEnter Roll Number to Search : ")
@@ -125,9 +112,7 @@ def search_student():
         print("students.txt file does not exist.")
 
 
-# ==========================================================
 # Function : Update Student
-# ==========================================================
 def update_student():
 
     roll = input("\nEnter Roll Number to Update : ")
@@ -172,9 +157,9 @@ def update_student():
         print("students.txt file does not exist.")
 
 
-# ==========================================================
+
 # Function : Delete Student
-# ==========================================================
+
 def delete_student():
 
     roll = input("\nEnter Roll Number to Delete : ")
@@ -207,9 +192,8 @@ def delete_student():
         print("students.txt file does not exist.")
 
 
-# ==========================================================
 # Main Program
-# ==========================================================
+
 
 while True:
 
