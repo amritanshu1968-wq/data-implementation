@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 # Student Class
 class Student:
 
@@ -10,25 +11,37 @@ class Student:
         self.book = None
 
     # Display Student Details
-    def display(self):
-        print("\n========== Student Details ==========")
-        print("Student ID   :", self.student_id)
-        print("Student Name :", self.name)
-        print("Mobile No.   :", self.mobile)
-        print("Book ID      :", self.book_id)
-        print("Issued Book  :", self.book)
+def display(self):
+
+    print("\n========== Student Details")
+
+    print("Student ID   :", self.student_id)
+    print("Student Name :", self.name)
+    print("Mobile No.   :", self.mobile)
+    print("Book ID      :", self.book_id)
+    print("Issued Book  :", self.book)
+    print("Issue Date   :", self.issue_date)
+    print("Due Date     :", self.due_date)
 
 
 # Library Class
 class Library:
 
     # Constructor
-    def __init__(self):
+   
+  def __init__(self, student_id, name, mobile):
+    self.student_id = student_id
+    self.name = name
+    self.mobile = mobile
+    self.book_id = None
+    self.book = None
 
-        self.students = {}
+    # New Attributes
+    self.issue_date = None
+    self.due_date = None
 
         # Predefined Books
-        self.books = {
+    self.books = {
             "B101": "Python Programming",
             "B102": "Data Structures",
             "B103": "DBMS",
