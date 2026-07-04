@@ -1,20 +1,22 @@
-#wap using oop concept Library management system including: add student, Issue book, Search Book, Delete Student detail, Payment late, Submit book
-
-
-
+# Student Class
 class Student:
 
     # Constructor
-    def __init__(self, student_id, name):
+    def __init__(self, student_id, name, mobile):
         self.student_id = student_id
         self.name = name
+        self.mobile = mobile
+        self.book_id = None
         self.book = None
 
     # Display Student Details
     def display(self):
-        print("\nStudent ID :", self.student_id)
+        print("\n========== Student Details ==========")
+        print("Student ID   :", self.student_id)
         print("Student Name :", self.name)
-        print("Issued Book :", self.book)
+        print("Mobile No.   :", self.mobile)
+        print("Book ID      :", self.book_id)
+        print("Issued Book  :", self.book)
 
 
 # Library Class
@@ -22,34 +24,59 @@ class Library:
 
     # Constructor
     def __init__(self):
+
         self.students = {}
+
+        # Predefined Books
+        self.books = {
+            "B101": "Python Programming",
+            "B102": "Data Structures",
+            "B103": "DBMS",
+            "B104": "Operating System",
+            "B105": "Computer Networks"
+        }
 
     # Add Student
     def add_student(self):
+
         student_id = input("Enter Student ID : ")
         name = input("Enter Student Name : ")
+        mobile = input("Enter Mobile Number : ")
 
-        self.students[student_id] = Student(student_id, name)
+        self.students[student_id] = Student(student_id, name, mobile)
 
         print("\nStudent Added Successfully!")
 
     # Issue Book
     def issue_book(self):
+
         student_id = input("Enter Student ID : ")
 
         if student_id in self.students:
 
-            book = input("Enter Book Name : ")
+            print("\nAvailable Books")
 
-            self.students[student_id].book = book
+            for id, book in self.books.items():
+                print(id, ":", book)
 
-            print("\nBook Issued Successfully!")
+            book_id = input("\nEnter Book ID : ")
+
+            if book_id in self.books:
+
+                self.students[student_id].book_id = book_id
+                self.students[student_id].book = self.books[book_id]
+
+                print("\nBook Issued Successfully!")
+
+            else:
+                print("\nInvalid Book ID!")
 
         else:
             print("\nStudent Not Found!")
 
     # Search Book
     def search_book(self):
+
         book = input("Enter Book Name : ")
 
         found = False
@@ -59,7 +86,8 @@ class Library:
             if student.book == book:
 
                 print("\nBook Found")
-                print("Book :", student.book)
+                print("Book ID   :", student.book_id)
+                print("Book Name :", student.book)
                 print("Issued To :", student.name)
 
                 found = True
@@ -69,6 +97,7 @@ class Library:
 
     # Delete Student
     def delete_student(self):
+
         student_id = input("Enter Student ID : ")
 
         if student_id in self.students:
@@ -82,6 +111,7 @@ class Library:
 
     # Submit Book
     def submit_book(self):
+
         student_id = input("Enter Student ID : ")
 
         if student_id in self.students:
@@ -91,6 +121,7 @@ class Library:
                 print("\nBook Submitted :", self.students[student_id].book)
 
                 self.students[student_id].book = None
+                self.students[student_id].book_id = None
 
             else:
                 print("\nNo Book Issued!")
@@ -100,6 +131,7 @@ class Library:
 
     # Payment for Late Submission
     def payment_late(self):
+
         days = int(input("Enter Late Days : "))
 
         fine = days * 10
@@ -120,14 +152,15 @@ class Library:
                 student.display()
 
 
+# ===========================
 # Main Program
-
+# ===========================
 
 library = Library()
 
 while True:
 
-    print("\n========== Library Management System ==========")
+    print("\n========== SMART LIBRARY MANAGEMENT SYSTEM ==========")
 
     print("1. Add Student")
     print("2. Issue Book")
